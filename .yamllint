@@ -1,0 +1,27 @@
+# Configuración yamllint del repositorio.
+#
+# Decisiones:
+# - line-length: ampliado a 140. Los issue templates y los workflows
+#   admiten descripciones largas en una sola línea por legibilidad.
+# - document-start: desactivado. Ningún archivo del repo usa "---";
+#   no aporta nada y rompe la importación silenciosa de YAML.
+# - truthy: permite los valores de GitHub Actions (`on:`, `true`, etc.)
+#   sin reportar falsos positivos.
+# - comments-indentation: relajado por compatibilidad con bloques
+#   comentados de los workflows.
+#
+# Si añades reglas más estrictas, deja constancia del motivo aquí.
+
+extends: default
+
+rules:
+  line-length:
+    max: 140
+    level: warning
+  document-start: disable
+  truthy:
+    allowed-values: ["true", "false", "on", "off"]
+    check-keys: false
+  comments-indentation: disable
+  comments:
+    min-spaces-from-content: 1

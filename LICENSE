@@ -1,35 +1,4 @@
-Licencia dual del repositorio
-=============================
-
-Este repositorio combina código y contenido formativo bajo dos licencias
-distintas para equilibrar reutilización y protección de la autoría.
-
-1) Código (scripts, esquemas, tests, HTML/CSS/JS, archivos de
-   configuración) — Licencia MIT (texto íntegro más abajo).
-
-2) Contenido (documentación, guías, ejemplos, plantillas, paneles,
-   diagramas, slides y demás material didáctico bajo `docs/`,
-   `examples/`, `templates/`, `assets/`, `training/` y los archivos
-   .md de la raíz como README y CONTRIBUTING) — Creative Commons
-   Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0).
-   Texto íntegro en el archivo `LICENSE-CONTENT`.
-
-Toda redistribución debe conservar:
-   - este archivo `LICENSE`;
-   - el archivo `LICENSE-CONTENT`;
-   - el archivo `NOTICE`;
-   - el archivo `CITATION.cff`;
-   - el aviso de copyright y autoría que figuran en `NOTICE`.
-
-En caso de duda sobre qué licencia aplica a un archivo concreto, prevalece
-la indicación de cabecera del propio archivo. A falta de indicación
-expresa, los archivos con extensión .py, .sh, .json (esquemas), .yml,
-.yaml, .html, .css, .js y .gitignore se consideran código (MIT); el resto
-de archivos textuales y multimedia se consideran contenido (CC BY-SA 4.0).
-
-================================================================
-MIT License (aplica al código)
-================================================================
+MIT License
 
 Copyright (c) 2026 RemLeNoir <info@apferrer.com>
 
@@ -50,3 +19,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+----
+
+NOTA: este repositorio se distribuye bajo licencia DUAL. Esta licencia MIT
+aplica al CÓDIGO (scripts, esquemas, HTML/CSS/JS, configuración). El
+CONTENIDO formativo (docs, biblioteca, ejemplos, plantillas, training) está
+bajo Creative Commons Atribución-CompartirIgual 4.0 Internacional
+(CC BY-SA 4.0): texto en LICENSE-CONTENT, resumen y reglas de aplicación
+en LICENSING.md.

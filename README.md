@@ -132,18 +132,13 @@ training/       material didáctico
 
 Este repositorio se distribuye bajo **licencia dual**:
 
-- **Código** (scripts, esquemas, HTML/CSS/JS, configuración): **MIT**.
-  Consulta [`LICENSE`](LICENSE).
-- **Contenido** (docs, ejemplos, plantillas, paneles, training, README, etc.):
-  **CC BY-SA 4.0**. Consulta [`LICENSE-CONTENT`](LICENSE-CONTENT).
+- **Código** → MIT, en [`LICENSE`](LICENSE).
+- **Contenido** → CC BY-SA 4.0, en [`LICENSE-CONTENT`](LICENSE-CONTENT).
 
-Cualquier reutilización debe conservar [`LICENSE`](LICENSE),
-[`LICENSE-CONTENT`](LICENSE-CONTENT), [`NOTICE`](NOTICE) y
-[`CITATION.cff`](CITATION.cff), y citar la autoría original. Las obras derivadas
-del contenido **deben mantenerse bajo la misma licencia CC BY-SA 4.0**.
-
-Para citar el repositorio en trabajos académicos o profesionales, usa el formato
-del archivo [`CITATION.cff`](CITATION.cff).
+Las reglas concretas de qué licencia aplica a cada archivo y qué obligaciones
+implica la redistribución están en [`LICENSING.md`](LICENSING.md). Atribución y
+política de incumplimientos en [`NOTICE`](NOTICE). Cita estructurada para uso
+académico en [`CITATION.cff`](CITATION.cff).
 
 ## Cómo contribuir
 

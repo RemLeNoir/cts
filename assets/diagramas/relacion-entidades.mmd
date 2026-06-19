@@ -1,0 +1,9 @@
+erDiagram
+    ENCARGO ||--|| CONTRATO : produce
+    CONTRATO ||--o{ TERMINO : define
+    CONTRATO ||--o{ PRIORIDAD : ordena
+    CONTRATO ||--o{ ERROR : prohíbe
+    CONTRATO ||--o{ CRITERIO_SALIDA : exige
+    CONTRATO ||--|| TEST_CASE : se_verifica_con
+    TEST_CASE ||--|| SALIDA_SIMULADA : genera
+    SALIDA_SIMULADA ||--o{ METRICA : se_evalua_con

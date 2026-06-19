@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Panel de traducción de instrucciones vagas a contratos semánticos temporales para trabajar con IA.">
+  <title>Panel de traducción — Contratos semánticos temporales</title>
+  <style>
+    :root {
+      --bg: #fafaf9;
+      --fg: #1c1917;
+      --muted: #78716c;
+      --border: #e7e5e4;
+      --card: #ffffff;
+      --accent: #0f172a;
+      --highlight: #fef08a;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0c0a09;
+        --fg: #fafaf9;
+        --muted: #a8a29e;
+        --border: #292524;
+        --card: #1c1917;
+        --accent: #e2e8f0;
+        --highlight: #713f12;
+      }
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      line-height: 1.55;
+      font-size: 16px;
+    }
+    header {
+      padding: 2.5rem 1.5rem 1rem;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+    h1 {
+      margin: 0 0 .35rem;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+    }
+    .subtitle {
+      color: var(--muted);
+      margin: 0 0 1.5rem;
+      font-size: 1rem;
+      max-width: 60ch;
+    }
+    .search-wrap {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      padding: .75rem 1.5rem;
+      max-width: 980px;
+      margin: 0 auto;
+      z-index: 10;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    #search {
+      flex: 1;
+      padding: .6rem .9rem;
+      font-size: 1rem;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--fg);
+      border-radius: 6px;
+      font-family: inherit;
+    }
+    #search:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+    .count {
+      color: var(--muted);
+      font-size: .875rem;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: .5rem 1.5rem 4rem;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: minmax(180px, 1fr) 2fr auto;
+      gap: 1.25rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .row.hidden { display: none; }
+    .say {
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .should-say { color: var(--fg); }
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: .35rem .7rem;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: .8rem;
+      font-family: inherit;
+      transition: all .15s;
+      white-space: nowrap;
+    }
+    .copy-btn:hover { color: var(--fg); border-color: var(--fg); }
+    .copy-btn.copied {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+    mark {
+      background: var(--highlight);
+      color: inherit;
+      padding: 0 2px;
+      border-radius: 2px;
+    }
+    footer {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 3rem;
+      color: var(--muted);
+      font-size: .875rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a {
+      color: var(--muted);
+      text-decoration: underline;
+      text-decoration-color: var(--border);
+      text-underline-offset: 3px;
+    }
+    footer a:hover { color: var(--fg); }
+    kbd {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-bottom-width: 2px;
+      border-radius: 3px;
+      padding: 1px 5px;
+      font-size: .8em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+    .empty {
+      text-align: center;
+      color: var(--muted);
+      padding: 3rem 1rem;
+    }
+    .empty code {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-size: .9em;
+    }
+    @media (max-width: 640px) {
+      .row { grid-template-columns: 1fr; gap: .5rem; }
+      .copy-btn { justify-self: start; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Panel de traducción</h1>
+    <p class="subtitle">
+      Lo que decimos a la IA, frente a lo que deberíamos decir para cumplir el contrato semántico
+      del encargo. Busca, copia y pega.
+    </p>
+  </header>
+  <div class="search-wrap">
+    <input id="search" type="search" placeholder="Buscar... (pulsa / para enfocar)" autocomplete="off" aria-label="Buscar">
+    <span class="count" id="count" aria-live="polite"></span>
+  </div>
+  <main id="rows"></main>
+  <footer>
+    Fuente: <a href="./assets/panel-traduccion.csv">assets/panel-traduccion.csv</a> ·
+    Parte del repositorio <strong>Contratos semánticos temporales</strong> ·
+    <a href="./README.md">Volver al README</a>.
+    <br>Atajos: <kbd>/</kbd> enfoca el buscador, <kbd>Esc</kbd> lo limpia.
+  </footer>
+  <script>
+    const CSV_URL = './assets/panel-traduccion.csv';
+    let entries = [];
+
+    function parseCSV(text) {
+      const rows = [];
+      let row = [], field = '', inQuotes = false;
+      for (let i = 0; i < text.length; i++) {
+        const c = text[i], next = text[i + 1];
+        if (inQuotes) {
+          if (c === '"' && next === '"') { field += '"'; i++; }
+          else if (c === '"') { inQuotes = false; }
+          else { field += c; }
+        } else {
+          if (c === '"') { inQuotes = true; }
+          else if (c === ',') { row.push(field); field = ''; }
+          else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
+          else if (c === '\r') { /* skip */ }
+          else { field += c; }
+        }
+      }
+      if (field !== '' || row.length) { row.push(field); rows.push(row); }
+      return rows;
+    }
+
+    function escapeHtml(s) {
+      return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    function highlight(text, query) {
+      if (!query) return escapeHtml(text);
+      const safe = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      return escapeHtml(text).replace(new RegExp(`(${safe})`, 'gi'), '<mark>$1</mark>');
+    }
+
+    async function copyText(text, btn) {
+      try {
+        await navigator.clipboard.writeText(text);
+        const original = btn.textContent;
+        btn.textContent = '✓ copiado';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = original;
+          btn.classList.remove('copied');
+        }, 1200);
+      } catch (e) {
+        alert('No se pudo copiar al portapapeles. Selecciona el texto manualmente.');
+      }
+    }
+
+    function render(query = '') {
+      const container = document.getElementById('rows');
+      const q = query.trim().toLowerCase();
+      let visible = 0;
+      const html = entries.map(([say, should], i) => {
+        const matches = !q || say.toLowerCase().includes(q) || should.toLowerCase().includes(q);
+        if (matches) visible++;
+        return `
+          <div class="row${matches ? '' : ' hidden'}">
+            <div class="say">${highlight(say, q)}</div>
+            <div class="should-say">${highlight(should, q)}</div>
+            <button class="copy-btn" data-i="${i}" aria-label="Copiar al portapapeles">copiar</button>
+          </div>
+        `;
+      }).join('');
+      container.innerHTML = html + (visible === 0
+        ? `<div class="empty">Sin resultados para "${escapeHtml(query)}".</div>`
+        : '');
+      document.getElementById('count').textContent =
+        q ? `${visible} de ${entries.length}` : `${entries.length} entradas`;
+    }
+
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('copy-btn')) {
+        const i = parseInt(e.target.dataset.i, 10);
+        copyText(entries[i][1], e.target);
+      }
+    });
+
+    const search = document.getElementById('search');
+    search.addEventListener('input', e => render(e.target.value));
+
+    document.addEventListener('keydown', e => {
+      if (e.key === '/' && document.activeElement !== search) {
+        e.preventDefault();
+        search.focus();
+      }
+      if (e.key === 'Escape' && document.activeElement === search) {
+        search.value = '';
+        render('');
+        search.blur();
+      }
+    });
+
+    (async () => {
+      try {
+        const res = await fetch(CSV_URL);
+        if (!res.ok) throw new Error(res.statusText);
+        const text = await res.text();
+        const rows = parseCSV(text);
+        rows.shift();
+        entries = rows.filter(r => r.length >= 2 && r[0]);
+        render();
+      } catch (e) {
+        document.getElementById('rows').innerHTML =
+          '<div class="empty">No se pudo cargar el CSV.<br>' +
+          'Si abriste este archivo con doble click, los navegadores bloquean fetch en <code>file://</code>.<br>' +
+          'Sírvelo con <code>python -m http.server</code> y entra en <code>http://localhost:8000</code>.</div>';
+      }
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+{
+  "id": "ux-001",
+  "dominio": "ux-producto",
+  "prompt": "Escribe el copy de una pantalla vacía para una herramienta B2B de analítica.",
+  "contract": {
+    "version": "1.0.0",
+    "nombre": "ux-empty-state",
+    "dominio": "ux-producto",
+    "objetivo": "orientar al usuario ante una pantalla vacía",
+    "audiencia": "usuario nuevo de producto",
+    "terminos": {
+      "humano": "lenguaje natural, adulto y concreto",
+      "claro": "se entiende en menos de 5 segundos",
+      "accionable": "indica una siguiente acción visible"
+    },
+    "prioridades": [
+      { "nombre": "comprension", "orden": 1 },
+      { "nombre": "accion", "orden": 2 },
+      { "nombre": "tono", "orden": 3 },
+      { "nombre": "estilo", "orden": 4 }
+    ],
+    "errores": [
+      "usar slogans",
+      "prometer resultados",
+      "explicar una función inexistente"
+    ],
+    "incertidumbre": {
+      "politica": "si falta un detalle de interfaz, no lo inventes"
+    },
+    "salida": {
+      "formato": "markdown",
+      "max_palabras": 180,
+      "secciones": ["Usuario", "Fricción", "Copy final", "Criterio de éxito"],
+      "prohibidos": ["mágico", "sin esfuerzo", "revolucionario"]
+    }
+  },
+  "expected_output": {
+    "must_include": ["usuario", "fricción", "copy final", "criterio de éxito"],
+    "must_not_include": ["mágico", "sin esfuerzo", "revolucionario"],
+    "max_words": 180,
+    "priority_order": ["usuario", "fricción", "copy final", "criterio de éxito"]
+  }
+}

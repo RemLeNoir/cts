@@ -1,0 +1,43 @@
+{
+  "id": "periodismo-001",
+  "dominio": "periodismo",
+  "prompt": "Escribe una nota breve sobre por qué una redacción podría usar contratos semánticos temporales al trabajar con IA.",
+  "contract": {
+    "version": "1.0.0",
+    "nombre": "periodismo-nota-breve",
+    "dominio": "periodismo",
+    "objetivo": "informar con atribución y control de incertidumbre",
+    "audiencia": "lectorado general",
+    "terminos": {
+      "neutral": "factual, atribuido y sin militancia retórica",
+      "breve": "máximo 180 palabras",
+      "claro": "lectura fluida sin perder precisión"
+    },
+    "prioridades": [
+      { "nombre": "verificabilidad", "orden": 1 },
+      { "nombre": "atribucion", "orden": 2 },
+      { "nombre": "claridad", "orden": 3 },
+      { "nombre": "ritmo", "orden": 4 }
+    ],
+    "errores": [
+      "editorializar",
+      "titular vacío",
+      "confundir hecho con opinión"
+    ],
+    "incertidumbre": {
+      "politica": "marcar explícitamente lo no confirmado"
+    },
+    "salida": {
+      "formato": "markdown",
+      "max_palabras": 180,
+      "secciones": ["Titular", "Entradilla", "Contexto", "Límites"],
+      "prohibidos": ["histórico", "definitivo", "incuestionable"]
+    }
+  },
+  "expected_output": {
+    "must_include": ["titular", "entradilla", "contexto", "límites"],
+    "must_not_include": ["histórico", "definitivo", "incuestionable"],
+    "max_words": 180,
+    "priority_order": ["titular", "entradilla", "contexto", "límites"]
+  }
+}

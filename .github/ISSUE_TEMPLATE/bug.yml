@@ -1,0 +1,44 @@
+name: Error o incoherencia
+description: Reporta un fallo conceptual, de formato, de validación o de tests.
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: problema
+    attributes:
+      label: Qué falla
+      description: Describe el problema con precisión.
+      placeholder: El test no detecta correctamente...
+    validations:
+      required: true
+
+  - type: textarea
+    id: contexto
+    attributes:
+      label: Contexto
+      description: Indica archivo, dominio y condición de uso.
+    validations:
+      required: true
+
+  - type: textarea
+    id: esperado
+    attributes:
+      label: Qué esperabas
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Qué ocurrió
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contrato
+    attributes:
+      label: Comprobaciones
+      options:
+        - label: He revisado si el contrato semántico define los términos ambiguos.
+        - label: He ejecutado los tests locales.
+        - label: He comprobado si el problema afecta a dominios sensibles.

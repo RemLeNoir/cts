@@ -1,0 +1,42 @@
+version: "1.0.0"
+nombre: "contrato-base"
+dominio: "general"
+objetivo: "describir el significado operativo del encargo"
+audiencia: "equipo de trabajo"
+
+terminos:
+  profesional: "tono sobrio, directo y verificable"
+  claro: "entendible por no especialistas sin perder precisión"
+  breve: "máximo 180 palabras salvo excepción justificada"
+
+prioridades:
+  - nombre: "precision"
+    orden: 1
+  - nombre: "utilidad"
+    orden: 2
+  - nombre: "tono"
+    orden: 3
+  - nombre: "formato"
+    orden: 4
+
+errores:
+  - "inventar datos"
+  - "ocultar incertidumbre"
+  - "usar lenguaje vacío"
+  - "omitir secciones obligatorias"
+
+incertidumbre:
+  politica: "marcar vacíos y no afirmar como hecho lo no verificado"
+  escalar_a_humano: false
+
+salida:
+  formato: "markdown"
+  max_palabras: 180
+  secciones:
+    - "Contexto"
+    - "Respuesta"
+    - "Límites"
+  prohibidos:
+    - "sinergia"
+    - "revolucionario"
+    - "disruptivo"

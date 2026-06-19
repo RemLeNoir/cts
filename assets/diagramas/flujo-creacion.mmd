@@ -1,0 +1,12 @@
+flowchart TD
+    A[Encargo inicial] --> B[Detectar términos ambiguos]
+    B --> C[Definir diccionario del encargo]
+    C --> D[Ordenar prioridades]
+    D --> E[Declarar errores]
+    E --> F[Definir política de incertidumbre]
+    F --> G[Definir salida esperada]
+    G --> H[Crear test_case]
+    H --> I[Validar esquema]
+    I --> J[Simular salida]
+    J --> K[Evaluar]
+    K --> L[Iterar contrato]

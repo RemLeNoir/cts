@@ -1,0 +1,44 @@
+{
+  "id": "legal-001",
+  "dominio": "legal",
+  "prompt": "Resume una cláusula contractual para un cliente no jurista.",
+  "contract": {
+    "version": "1.0.0",
+    "nombre": "legal-resumen-clausula",
+    "dominio": "legal",
+    "objetivo": "explicar un texto contractual sin presentarlo como consejo definitivo",
+    "audiencia": "cliente no jurista",
+    "terminos": {
+      "claro": "entendible sin borrar matiz normativo",
+      "prudente": "no sustituye asesoramiento profesional",
+      "útil": "destaca supuesto, norma y riesgo"
+    },
+    "prioridades": [
+      { "nombre": "exactitud", "orden": 1 },
+      { "nombre": "supuesto", "orden": 2 },
+      { "nombre": "riesgo", "orden": 3 },
+      { "nombre": "tono", "orden": 4 }
+    ],
+    "errores": [
+      "dar consejo definitivo",
+      "simplificar de forma engañosa",
+      "ocultar riesgo interpretativo"
+    ],
+    "incertidumbre": {
+      "politica": "señalar revisión jurídica obligatoria",
+      "escalar_a_humano": true
+    },
+    "salida": {
+      "formato": "markdown",
+      "max_palabras": 200,
+      "secciones": ["Supuesto", "Norma aplicable", "Riesgo", "Revisión humana"],
+      "prohibidos": ["esto garantiza", "caso cerrado", "sin riesgo legal"]
+    }
+  },
+  "expected_output": {
+    "must_include": ["supuesto", "norma aplicable", "riesgo", "revisión humana"],
+    "must_not_include": ["esto garantiza", "caso cerrado", "sin riesgo legal"],
+    "max_words": 200,
+    "priority_order": ["supuesto", "norma aplicable", "riesgo", "revisión humana"]
+  }
+}

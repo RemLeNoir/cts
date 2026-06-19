@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Contrato semántico temporal",
+  "type": "object",
+  "required": [
+    "version",
+    "objetivo",
+    "audiencia",
+    "terminos",
+    "prioridades",
+    "errores",
+    "incertidumbre",
+    "salida"
+  ],
+  "properties": {
+    "version": {
+      "type": "string"
+    },
+    "nombre": {
+      "type": "string"
+    },
+    "dominio": {
+      "type": "string"
+    },
+    "objetivo": {
+      "type": "string",
+      "minLength": 10
+    },
+    "audiencia": {
+      "type": "string",
+      "minLength": 3
+    },
+    "terminos": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "prioridades": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["nombre", "orden"],
+        "properties": {
+          "nombre": { "type": "string" },
+          "orden": { "type": "integer", "minimum": 1 }
+        }
+      }
+    },
+    "errores": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "incertidumbre": {
+      "type": "object",
+      "required": ["politica"],
+      "properties": {
+        "politica": { "type": "string" },
+        "escalar_a_humano": { "type": "boolean" },
+        "frase_modelo": { "type": "string" }
+      }
+    },
+    "salida": {
+      "type": "object",
+      "required": ["formato", "secciones"],
+      "properties": {
+        "formato": { "type": "string" },
+        "max_palabras": { "type": "integer", "minimum": 1 },
+        "secciones": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string" }
+        },
+        "prohibidos": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

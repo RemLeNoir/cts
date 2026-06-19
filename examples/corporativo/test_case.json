@@ -1,0 +1,43 @@
+{
+  "id": "corporativo-001",
+  "dominio": "corporativo",
+  "prompt": "Redacta una nota interna para dirección sobre la adopción de contratos semánticos temporales en el equipo de IA.",
+  "contract": {
+    "version": "1.0.0",
+    "nombre": "corporativo-direccion",
+    "dominio": "corporativo",
+    "objetivo": "ayudar a dirección a decidir un piloto limitado",
+    "audiencia": "comité de dirección",
+    "terminos": {
+      "profesional": "tono sobrio, directo y verificable",
+      "viable": "coste asumible y responsables claros",
+      "claro": "comprensible por perfiles no técnicos"
+    },
+    "prioridades": [
+      { "nombre": "precision", "orden": 1 },
+      { "nombre": "utilidad", "orden": 2 },
+      { "nombre": "tono", "orden": 3 }
+    ],
+    "errores": [
+      "usar jerga inflada",
+      "prometer resultados sin evidencia",
+      "omitir riesgos"
+    ],
+    "incertidumbre": {
+      "politica": "marcar como pendiente todo dato no validado",
+      "frase_modelo": "Pendiente de validación interna."
+    },
+    "salida": {
+      "formato": "markdown",
+      "max_palabras": 220,
+      "secciones": ["Decisión", "Beneficio", "Riesgo", "Siguiente paso"],
+      "prohibidos": ["sinergia", "revolucionario", "disruptivo"]
+    }
+  },
+  "expected_output": {
+    "must_include": ["decisión", "riesgo", "siguiente paso"],
+    "must_not_include": ["sinergia", "revolucionario", "disruptivo"],
+    "max_words": 220,
+    "priority_order": ["decisión", "beneficio", "riesgo", "siguiente paso"]
+  }
+}

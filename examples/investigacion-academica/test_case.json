@@ -1,0 +1,43 @@
+{
+  "id": "academica-001",
+  "dominio": "investigacion-academica",
+  "prompt": "Redacta un mini estado de la cuestión sobre contratos semánticos temporales y prompting.",
+  "contract": {
+    "version": "1.0.0",
+    "nombre": "academico-mini-estado",
+    "dominio": "investigacion-academica",
+    "objetivo": "resumir hallazgos y lagunas sin sobreafirmar",
+    "audiencia": "equipo investigador",
+    "terminos": {
+      "riguroso": "separa hallazgos, inferencias y lagunas",
+      "académico": "formal y preciso, sin barroquismo",
+      "sintético": "máximo 220 palabras"
+    },
+    "prioridades": [
+      { "nombre": "trazabilidad", "orden": 1 },
+      { "nombre": "precision", "orden": 2 },
+      { "nombre": "estructura", "orden": 3 },
+      { "nombre": "estilo", "orden": 4 }
+    ],
+    "errores": [
+      "citas inventadas",
+      "afirmaciones absolutas",
+      "no marcar lagunas"
+    ],
+    "incertidumbre": {
+      "politica": "declarar explícitamente vacíos de evidencia"
+    },
+    "salida": {
+      "formato": "markdown",
+      "max_palabras": 220,
+      "secciones": ["Pregunta", "Hallazgos", "Lagunas", "Siguiente paso"],
+      "prohibidos": ["queda demostrado", "sin duda", "irrefutable"]
+    }
+  },
+  "expected_output": {
+    "must_include": ["pregunta", "hallazgos", "lagunas", "siguiente paso"],
+    "must_not_include": ["queda demostrado", "sin duda", "irrefutable"],
+    "max_words": 220,
+    "priority_order": ["pregunta", "hallazgos", "lagunas", "siguiente paso"]
+  }
+}

@@ -1,0 +1,38 @@
+name: Nuevo caso de uso
+description: Propón un nuevo ejemplo aplicado o una extensión del marco.
+title: "[CASO] "
+labels: ["enhancement", "case-study"]
+body:
+  - type: input
+    id: dominio
+    attributes:
+      label: Dominio
+      placeholder: educación, RR. HH., soporte técnico...
+    validations:
+      required: true
+
+  - type: textarea
+    id: problema
+    attributes:
+      label: Problema semántico que resuelve
+      description: ¿Qué ambigüedad, conflicto o riesgo de interpretación aborda?
+    validations:
+      required: true
+
+  - type: textarea
+    id: propuesta
+    attributes:
+      label: Propuesta
+      description: Describe prompt, contrato, salida esperada y criterio de evaluación.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: alcance
+    attributes:
+      label: Alcance
+      options:
+        - label: Incluye definición de términos.
+        - label: Incluye jerarquía de prioridades.
+        - label: Incluye tratamiento de incertidumbre.
+        - label: Incluye tests automáticos.

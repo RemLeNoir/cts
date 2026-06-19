@@ -1,0 +1,58 @@
+Contratos semánticos temporales
+================================
+
+Copyright (c) 2026 RemLeNoir <info@apferrer.com>
+Repositorio canónico: https://github.com/RemLeNoir/cts
+
+Autoría y origen
+----------------
+La concepción, redacción y estructura de este repositorio — el marco de
+los contratos semánticos temporales, sus guías, plantillas, esquemas,
+ejemplos, paneles de traducción y materiales formativos — es obra
+original de RemLeNoir, salvo terceros expresamente citados en
+`docs/bibliografia.md`.
+
+Licencia
+--------
+Este repositorio se distribuye bajo licencia DUAL:
+
+  - Código fuente: MIT License (consultar `LICENSE`).
+  - Contenido formativo: Creative Commons Reconocimiento-CompartirIgual
+    4.0 Internacional (CC BY-SA 4.0), texto íntegro en
+    `LICENSE-CONTENT`.
+
+Reutilización y atribución
+--------------------------
+Toda redistribución, parcial o total, debe:
+
+  1. Conservar los archivos `LICENSE`, `LICENSE-CONTENT`, `NOTICE`
+     y `CITATION.cff`.
+  2. Citar la autoría original. La cita estructurada está en
+     `CITATION.cff`; un formato libre aceptable es:
+
+         RemLeNoir (2026). Contratos semánticos temporales.
+         https://github.com/RemLeNoir/cts. CC BY-SA 4.0 / MIT.
+
+  3. Bajo CC BY-SA 4.0, cualquier obra derivada del contenido debe
+     publicarse con la MISMA licencia. No se permiten relicencias
+     restrictivas del material de origen.
+
+Marcas y nombre del proyecto
+----------------------------
+El nombre "Contratos semánticos temporales" se mantiene como rasgo
+identificativo del proyecto. Las obras derivadas deben elegir un nombre
+distinto que evite la confusión sobre el origen oficial; no obstante, se
+recomienda indicar de forma visible que la obra derivada está basada en
+este repositorio.
+
+Cómo reportar incumplimientos
+-----------------------------
+Si detectas redistribución que omite la atribución, oculta la licencia
+CC BY-SA en derivados del contenido, o presenta el material como
+original sin crédito, escribe a info@apferrer.com indicando la URL del
+material y la naturaleza del incumplimiento.
+
+Ausencia de garantía
+--------------------
+Este material se ofrece tal cual, sin garantías. Consulta los apartados
+de limitación de responsabilidad de `LICENSE` y `LICENSE-CONTENT`.

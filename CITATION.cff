@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+message: "Si usas este repositorio, cítalo como se indica abajo."
+title: "Contratos semánticos temporales"
+abstract: >-
+  Marco operativo, plantillas, ejemplos y materiales formativos para
+  diseñar contratos semánticos temporales al trabajar con modelos de
+  IA: documentos breves, versionables y verificables que fijan el
+  significado operativo de un encargo, sus prioridades, sus errores,
+  el tratamiento de la incertidumbre y los criterios de salida.
+type: software
+authors:
+  - alias: RemLeNoir
+    email: info@apferrer.com
+repository-code: "https://github.com/RemLeNoir/cts"
+url: "https://github.com/RemLeNoir/cts"
+license:
+  - MIT
+  - CC-BY-SA-4.0
+keywords:
+  - contratos semánticos
+  - pragmática
+  - prompt engineering
+  - LLM
+  - evaluación
+  - IA responsable
+  - español
+date-released: "2026-06-19"
+version: "1.0.0"

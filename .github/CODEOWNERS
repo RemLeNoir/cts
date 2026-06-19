@@ -1,0 +1,26 @@
+# Propiedad del código y revisión obligatoria.
+#
+# Cada línea define quién es propietario de los archivos que coincidan
+# con el patrón. GitHub solicitará automáticamente revisión de las
+# personas o equipos indicados en cualquier pull request que toque esos
+# archivos.
+#
+# La efectividad real de este archivo requiere activar en
+# Settings > Branches > Branch protection rule para "main":
+#   - Require a pull request before merging
+#   - Require approvals
+#   - Require review from Code Owners
+#
+# Sin esa regla de protección, CODEOWNERS solo SUGIERE revisores; no
+# bloquea merges directos.
+
+# Propietario por defecto de todo el repositorio.
+*       @RemLeNoir
+
+# Archivos de licencia, autoría y citación: NUNCA deben modificarse sin
+# revisión expresa del propietario.
+/LICENSE                @RemLeNoir
+/LICENSE-CONTENT        @RemLeNoir
+/NOTICE                 @RemLeNoir
+/CITATION.cff           @RemLeNoir
+/.github/CODEOWNERS     @RemLeNoir

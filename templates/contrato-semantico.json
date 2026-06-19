@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "version": "1.0.0",
+  "nombre": "contrato-base",
+  "dominio": "general",
+  "objetivo": "describir el significado operativo del encargo",
+  "audiencia": "equipo de trabajo",
+  "terminos": {
+    "profesional": "tono sobrio, directo y verificable",
+    "claro": "entendible por no especialistas sin perder precisión",
+    "breve": "maximo 180 palabras salvo excepción justificada"
+  },
+  "prioridades": [
+    { "nombre": "precision", "orden": 1 },
+    { "nombre": "utilidad", "orden": 2 },
+    { "nombre": "tono", "orden": 3 },
+    { "nombre": "formato", "orden": 4 }
+  ],
+  "errores": [
+    "inventar datos",
+    "ocultar incertidumbre",
+    "usar lenguaje vacio",
+    "omitir secciones obligatorias"
+  ],
+  "incertidumbre": {
+    "politica": "marcar vacios y no afirmar como hecho lo no verificado",
+    "escalar_a_humano": false
+  },
+  "salida": {
+    "formato": "markdown",
+    "max_palabras": 180,
+    "secciones": ["Contexto", "Respuesta", "Limites"],
+    "prohibidos": ["sinergia", "revolucionario", "disruptivo"]
+  }
+}

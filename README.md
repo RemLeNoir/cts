@@ -34,42 +34,62 @@ Ayudar a equipos, docentes, periodistas, diseñadores, juristas, personal sanita
 - Esquema JSON y scripts de validación.
 - Tests automáticos y CI en GitHub Actions.
 - Material formativo y checklist de auditoría semántica.
-- Panel de traducción: “lo que decimos” vs “lo que deberíamos decir”.
+- **Biblioteca de transformaciones**: 29 secciones, 251 entradas, "lo que se suele decir" vs "lo que se debería decir" por dominio (contratación, contratación pública, Canarias/aduanas, código, datos, RRHH, finanzas, trading, seguridad/RGPD, etc.).
 
-## Panel de traducción interactivo
+## Biblioteca interactiva
 
-Web estática, sin dependencias, lista para servir desde GitHub Pages:
-[`index.html`](index.html). Búsqueda en vivo, click para copiar al portapapeles,
-fuente única de datos en [`assets/panel-traduccion.csv`](assets/panel-traduccion.csv).
+La pieza principal del repositorio es la **biblioteca de contratos
+semánticos**: una colección por dominio de instrucciones reales mal formuladas
+junto a su versión operativa. Está pensada para usar en el día a día.
 
-Para activar el panel público:
+- **Web estática**: [`index.html`](index.html). Busca en vivo, filtra por
+  dominio, copia al portapapeles. Sin dependencias.
+- **Fuente canónica**: [`biblioteca/biblioteca.md`](biblioteca/biblioteca.md).
+  Editable a mano. Es lo que se navega en GitHub.
+- **Datos estructurados** (generados): [`biblioteca/biblioteca.json`](biblioteca/biblioteca.json).
+  Es lo que consume el frontend.
 
-1. En GitHub: **Settings → Pages → Source → Deploy from a branch → `main` / root**.
-2. URL resultante: `https://remlenoir.github.io/cts/`.
+Para regenerar el JSON tras editar el markdown:
+
+```bash
+python scripts/build_biblioteca.py
+```
+
+URL pública (GitHub Pages): https://remlenoir.github.io/cts/
+
+Para activar Pages si no lo está: **Settings → Pages → Source → Deploy from a
+branch → `main` / root**.
 
 ## Uso rápido
 
-### Leer primero
-1. `docs/guia-teorica.md`
-2. `docs/guia-practica.md`
-3. `templates/contrato-semantico.md`
+### Como herramienta del día a día
 
-### Validar ejemplos
+1. Abre la biblioteca en https://remlenoir.github.io/cts/.
+2. Busca por dominio o palabra clave (p. ej. "factura", "NDA", "DUA").
+3. Copia la versión "lo que se debería decir" como base de tu prompt.
+4. Ajusta los campos `[PENDIENTE]` / `[VERIFICAR]` con tus datos.
+
+### Como repositorio versionado
 
 ```bash
-python -m pip install -U jsonschema pyyaml pytest
-python scripts/run_example_tests.py
-pytest
+python -m pip install -U jsonschema pyyaml pytest yamllint
+python scripts/build_biblioteca.py    # regenera el JSON
+python scripts/validate_contracts.py  # valida la capa formal opcional
+python scripts/run_example_tests.py   # tests de los ejemplos
+pytest                                # suite completa
 ```
 
-### Crear tu primer contrato
-1. Duplica una plantilla de `templates/`.
-2. Define el diccionario del encargo.
-3. Ordena prioridades.
-4. Declara errores.
-5. Explica cómo tratar la incertidumbre.
-6. Añade criterios de salida.
-7. Crea un caso de prueba en `examples/`.
+### Capa formal opcional (para quien quiera contratos JSON validables)
+
+Además de la biblioteca en markdown, el repo conserva una capa formal:
+
+- [`schemas/contrato.schema.json`](schemas/contrato.schema.json): esquema JSON.
+- [`templates/contrato-semantico.{md,json,yaml}`](templates/): punto de
+  partida formal.
+- [`examples/<dominio>/`](examples/): 6 ejemplos con `README.md` + `test_case.json`.
+
+Es la pieza para quien quiera escribir contratos como JSON con validación
+estructural. La biblioteca cubre el día a día sin necesidad de pasar por aquí.
 
 ## Flujo recomendado
 
@@ -88,14 +108,16 @@ flowchart TD
 ## Estructura del repositorio
 
 ```text
-docs/        marco conceptual y operativo
-templates/   plantillas reutilizables
-examples/    casos por dominio
-schemas/     validación estructural
-scripts/     automatización
-tests/       pruebas
-assets/      diagramas y paneles
-training/    material didáctico
+biblioteca/     biblioteca (fuente .md + JSON generado)
+index.html      frontend estático que consume el JSON
+docs/           marco conceptual y operativo
+templates/      plantillas reutilizables (capa formal)
+examples/       casos por dominio (capa formal)
+schemas/        validación estructural
+scripts/        automatización (build_biblioteca, validate, etc.)
+tests/          pruebas
+assets/         diagramas
+training/       material didáctico
 ```
 
 ## Principios del proyecto

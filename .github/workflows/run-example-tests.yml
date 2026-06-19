@@ -22,8 +22,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest pyyaml jsonschema
 
-      - name: Ejecutar tests de ejemplos
+      - name: Regenerar biblioteca/biblioteca.json (sanity check)
+        run: python scripts/build_biblioteca.py
+
+      - name: Ejecutar tests de ejemplos (capa formal)
         run: python scripts/run_example_tests.py
 
-      - name: Ejecutar pytest
+      - name: Ejecutar pytest (incluye coherencia md vs json)
         run: pytest -q

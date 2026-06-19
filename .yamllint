@@ -25,3 +25,4 @@ rules:
   comments-indentation: disable
   comments:
     min-spaces-from-content: 1
+  new-lines: disable

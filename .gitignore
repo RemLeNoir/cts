@@ -5,3 +5,7 @@ __pycache__/
 .DS_Store
 coverage.xml
 htmlcov/
+
+# Borrador interno y notas locales — no se publican
+.docs/
+CLAUDE.md
